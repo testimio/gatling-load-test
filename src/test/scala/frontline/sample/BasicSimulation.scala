@@ -13,7 +13,8 @@ import scala.concurrent.duration._
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity
+import org.apache.http.entity.StringEntity;
+import org.apache.http.util.EntityUtils;
 
 
 
@@ -27,7 +28,7 @@ class BasicSimulation extends Simulation {
     val entity = new StringEntity(json);
     request.setEntity(entity);
     val httpResponse = httpClient.execute(request)
-    println("StatusCode - " + httpResponse.getStatusLine.getStatusCode)
+    println("StatusCode - " + EntityUtils.toString(response.getEntity()))
   }
 
   val httpConf = http
