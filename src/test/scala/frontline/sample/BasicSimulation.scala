@@ -58,10 +58,10 @@ class BasicSimulation extends Simulation {
  def  run() = {
     // exec { session => println("token print2"); session }
     // exec { session => println(tokenAPI:String); session }
-    exec(session => session.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink"))
+    exec { session => session.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink") }
     exec(http("lightweight")
       .post("/result/lightweight/test")
-      .body(ElFileBody("auth.json")).asJson
+      .body(ElFileBody("result.json")).asJson
       .headers(Map("Content-Type" -> "application/json", "Authorization" -> "Bearer ${token}"))
       .check(status.in(200 to 210)))
       //.exec { session => println(session); session }
