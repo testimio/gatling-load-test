@@ -21,14 +21,13 @@ class BasicSimulation extends Simulation {
   val SERVICES_HOST = "https://services.testim.io";
 
   before() {
-    val httpClient = HttpClientBuilder.create.build
+    val httpClient = HttpClientBuilder.create().build();
     val request = new HttpPost(this.SERVICES_HOST + "/executions/initialize");
     val json = "{\"projectId\":\"EFlU5RmSlcO9rhsKuMPd\",\"token\":\"yZZdfByGuQSlpT1oxBOBaVAkM7kQHUKlUNOvUZtjc5N5Kl421N\",\"branchName\":\"master\",\"lightweightMode\":true,\"localGrid\":true}";
     val entity = new StringEntity(json);
-    httpPost.setEntity(entity);
+    request.setEntity(entity);
     val httpResponse = httpClient.execute(request)
     println("StatusCode - " + httpResponse.getStatusLine.getStatusCode)
-    httpClient.close()
   }
 
   val httpConf = http
