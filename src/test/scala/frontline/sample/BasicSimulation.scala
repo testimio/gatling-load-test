@@ -28,7 +28,7 @@ class BasicSimulation extends Simulation {
     val entity = new StringEntity(json);
     request.setEntity(entity);
     val httpResponse = httpClient.execute(request)
-    println("StatusCode - " + EntityUtils.toString(response.getEntity()))
+    println("StatusCode - " + EntityUtils.toString(httpResponse.getEntity()))
   }
 
   val httpConf = http
