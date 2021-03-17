@@ -20,7 +20,7 @@ import org.apache.http.util.EntityUtils;
 
 class BasicSimulation extends Simulation {
   val SERVICES_HOST = "https://services.testim.io";
-  val res = "";
+  def res = "";
 
   before() {
     val httpClient = HttpClientBuilder.create().build();
