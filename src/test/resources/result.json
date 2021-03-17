@@ -4,8 +4,8 @@
     "testId": "YTRMqkNYm55y7bJD",
     "testResult": {
       "createdBy": { "uid": "ci:EFlU5RmSlcO9rhsKuMPd" },
-      "endTime": 1615465535365,
-      "startTime": 1615465531913,
+      "endTime": 1616022092325,
+      "startTime": 1616022081264,
       "revisions": { "test": "BIZUR14f94EA5OY7" },
       "revisionStatus": { "test": { "revisionId": "BIZUR14f94EA5OY7", "stepId": "ecSPwvtV7nnYOM3W" } },
       "success": false,
