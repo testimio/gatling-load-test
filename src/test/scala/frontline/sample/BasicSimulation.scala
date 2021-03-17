@@ -48,17 +48,17 @@ var headers_10 = Map("Content-Type" -> """application/json""", "Authorization" -
 
 
   val httpConf = http
-    .baseUrl("http://demo.testim.io")
+    .baseUrl("https://services.testim.io")
 
- def  getAllDevices() = {
-    exec { session => println("token print2"); session }
-    exec { session => println(tokenAPI:String); session }
-    exec(session => session.set("token", tokenAPI))
-    // exec(http("Get all devices")
-    //   .get("/devices/getAllDevices")
-    //   .headers(headers_10)
-    //   .check(status.in(200 to 210)))
-    //   //.exec { session => println(session); session }
+ def  run() = {
+    // exec { session => println("token print2"); session }
+    // exec { session => println(tokenAPI:String); session }
+    // exec(session => session.set("token", tokenAPI))
+    exec(http("lightweight")
+      .get("/result/lightweight/test")
+      .headers(headers_10)
+      .check(status.in(200 to 210)))
+      //.exec { session => println(session); session }
 
     //   .pause(1, 20)
   }
@@ -68,8 +68,7 @@ var headers_10 = Map("Content-Type" -> """application/json""", "Authorization" -
   val scn = scenario("scenario1")
     // .exec(authAPI)
     .pause(1)
-    .exec(getAllDevices())
-    .exec(http("Page 0").get("/bundle.js"))
+    .exec(run())
 
   setUp(
     scn.inject(
