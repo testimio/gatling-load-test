@@ -78,7 +78,7 @@ class BasicSimulation extends Simulation {
 
   setUp(
     scn.inject(
-      nothingFor(15.seconds),
+      nothingFor(5.seconds),
       constantUsersPerSec(5).during(5.seconds)
     )
   )
