@@ -44,7 +44,7 @@ class BasicSimulation extends Simulation {
   //     exec{session => { tokenAPI = session("token").as[String]
   //     session}})
 
-var headers_10 = Map("Content-Type" -> """application/json""", "Authorization" -> "Bearer " + TOKEN)
+var headers_10 = Map("Content-Type" -> """application/json""", "Authorization" -> "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink")
 
 
   val httpConf = http
