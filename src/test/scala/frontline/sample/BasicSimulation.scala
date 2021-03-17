@@ -11,13 +11,13 @@ import io.gatling.http.Predef._
 import scala.concurrent.duration._
 
 
-val SERVICES_HOST = "https://services.testim.io";
 
 class BasicSimulation extends Simulation {
+  val SERVICES_HOST = "https://services.testim.io";
 
   before() {
     val httpClient = HttpClientBuilder.create.build
-    HttpPost request = new HttpPost(SERVICES_HOST + "/executions/initialize");
+    HttpPost request = new HttpPost(this.SERVICES_HOST + "/executions/initialize");
     String json = "{\"projectId\":\"EFlU5RmSlcO9rhsKuMPd\",\"token\":\"yZZdfByGuQSlpT1oxBOBaVAkM7kQHUKlUNOvUZtjc5N5Kl421N\",\"branchName\":\"master\",\"lightweightMode\":true,\"localGrid\":true}";
     StringEntity entity = new StringEntity(json);
     httpPost.setEntity(entity);
