@@ -21,7 +21,7 @@ class BasicSimulation extends Simulation {
   setUp(
     scn.inject(
       nothingFor(5.seconds),
-      rampConcurrentUsers(10).to(100).during(1.minutes)
+      rampConcurrentUsers(10).to(20).during(10.seconds) // 2
       // constantUsersPerSec(1000).during(2.minutes)
     )
   ).protocols(httpConf)
