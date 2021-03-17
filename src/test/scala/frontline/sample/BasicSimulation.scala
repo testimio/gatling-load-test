@@ -62,7 +62,7 @@ class BasicSimulation extends Simulation {
     exec(http("lightweight")
       .post("/result/lightweight/test")
       .body(ElFileBody("result.json")).asJson
-      .headers(Map("Content-Type" -> "application/json", "Authorization" -> "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink"))
+      .headers(Map("Authorization" -> "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDIyMTg3LCJleHAiOjE2MTYwMjU3ODd9.yZUwKB_fk5P5E7v-BQjpRgYVAapCEm57-pByBxWxG1k"))
       .check(status.in(200 to 210)))
       //.exec { session => println(session); session }
 
@@ -79,7 +79,7 @@ class BasicSimulation extends Simulation {
   setUp(
     scn.inject(
       nothingFor(5.seconds),
-      constantUsersPerSec(5).during(5.seconds)
+      constantUsersPerSec(500).during(5.seconds)
     )
   ).protocols(httpConf)
 }
