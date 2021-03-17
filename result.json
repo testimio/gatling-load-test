@@ -1,6 +1,6 @@
 {
     "projectId": "EFlU5RmSlcO9rhsKuMPd",
-    "resultId": "${resultId}",
+    "resultId": "${uuid}",
     "testId": "YTRMqkNYm55y7bJD",
     "testResult": {
       "createdBy": { "uid": "ci:EFlU5RmSlcO9rhsKuMPd" },
