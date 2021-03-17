@@ -11,7 +11,8 @@ import io.gatling.http.Predef._
 import scala.concurrent.duration._
 
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity
 
 
