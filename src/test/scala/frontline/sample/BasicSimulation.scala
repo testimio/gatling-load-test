@@ -49,7 +49,7 @@ class BasicSimulation extends Simulation {
   //     exec{session => { tokenAPI = session("token").as[String]
   //     session}})
 
-  val uuidfeeder: Feeder[String] = Iterator.continually(Map("uuid" -> UUID.randomUUID().toString))
+  val uuidfeeder = Iterator.continually(Map("uuid" -> UUID.randomUUID().toString))
 
 
   val httpConf = http
