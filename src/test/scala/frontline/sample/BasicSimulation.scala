@@ -42,7 +42,7 @@ class BasicSimulation extends Simulation {
         .check(status.is(200))
         .check(jsonPath("$.authData.token").find.saveAs("token")))
       exec{session => { tokenAPI = session("token").as[String]
-      session}}
+      session}})
 
 var headers_10 = Map("Content-Type" -> """application/json""", "Authorization" -> "Bearer ${token}")
 
