@@ -1,0 +1,75 @@
+{
+    "projectId": "EFlU5RmSlcO9rhsKuMPd",
+    "resultId": "${resultId}",
+    "testId": "YTRMqkNYm55y7bJD",
+    "testResult": {
+      "createdBy": { "uid": "ci:EFlU5RmSlcO9rhsKuMPd" },
+      "endTime": 1615465535365,
+      "startTime": 1615465531913,
+      "revisions": { "test": "BIZUR14f94EA5OY7" },
+      "revisionStatus": { "test": { "revisionId": "BIZUR14f94EA5OY7", "stepId": "ecSPwvtV7nnYOM3W" } },
+      "success": false,
+      "version": "0.10.23",
+      "wasMockNetworkActivated": null,
+      "reason": "Expected: '$150'. Actual: '$100'",
+      "status": "completed",
+      "locatorStats": {
+        "averageTestAccuracy": 1,
+        "numExactMatch": 16,
+        "numNoMatch": 0,
+        "numNonUnique": 0,
+        "averageStepAccuracy": 1,
+        "numExactMatchSteps": 1,
+        "numSteps": 1,
+        "stepsAccuracy": {
+          "accuracy_0_1": 0,
+          "accuracy_0_25": 0,
+          "accuracy_0_4": 0,
+          "accuracy_0_5": 0,
+          "accuracy_0_6": 0,
+          "accuracy_0_75": 0,
+          "accuracy_0_8": 0,
+          "accuracy_0_9": 0,
+          "accuracy_0_95": 0,
+          "accuracy_0_99": 0,
+          "accuracy_1": 1
+        },
+        "averageDomSize": 215
+      },
+      "userAgent": null,
+      "isDirty": null,
+      "exportsGlobal": {},
+      "branch": "master",
+      "name": "failing test",
+      "runMode": "remoteRunner",
+      "failurePath": [
+        {
+          "isShared": false,
+          "name": "Text Validation",
+          "id": "TRmTaVGpm1mDDAXb",
+          "iterationId": null,
+          "stepResultId": "FueJ2mq1HFZTJZAF",
+          "unrevisionedStepId": "7C5TVpHxZaPBjYjb"
+        }
+      ],
+      "failureUnrevisionedStepId": "7C5TVpHxZaPBjYjb",
+      "errorType": "text-compare-failure",
+      "fullLogs": {
+        "stats": {
+          "console": {},
+          "error": 0,
+          "logEntry": 0
+        },
+        "verboseStepsWithError": [],
+        "verboseStepsWithWarning": [],
+        "stepsWithError": [],
+        "stepsWithWarning": [],
+        "logFiles": [],
+        "harFiles": []
+      },
+      "show": true,
+      "runnerStatus": "FINISHED",
+      "runnerMode": "lightweight-mode"
+    },
+    "remoteRunId": ""
+  }
