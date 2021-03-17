@@ -52,17 +52,17 @@ class BasicSimulation extends Simulation {
   val uuidfeeder = Iterator.continually(Map("uuid" -> UUID.randomUUID().toString))
 
 
-  val httpConf = http
-    .baseUrl("https://services.testim.io")
+  // val httpConf = http
+  //   .baseUrl("https://services.testim.io")
 
  def  run() = {
     // exec { session => println("token print2"); session }
     // exec { session => println(tokenAPI:String); session }
     exec { session => session.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink") }
     exec(http("lightweight")
-      .post("/result/lightweight/test")
+      .post("https://services.testim.io/result/lightweight/test")
       .body(ElFileBody("result.json")).asJson
-      .headers(Map("Content-Type" -> "application/json", "Authorization" -> "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink"))
+      .headers(Map("Content-Type" -> "application/json", "Authorization" -> "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink"))
       .check(status.in(200 to 210)))
       //.exec { session => println(session); session }
 
@@ -81,5 +81,5 @@ class BasicSimulation extends Simulation {
       nothingFor(15.seconds),
       constantUsersPerSec(5).during(5.seconds)
     )
-  ).protocols(httpConf)
+  )
 }
