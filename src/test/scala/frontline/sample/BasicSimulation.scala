@@ -16,12 +16,12 @@ class BasicSimulation extends Simulation {
     .baseUrl("http://demo.testim.io")
 
   val scn = scenario("scenario1")
-    .exec(http("Page 0").get("/"))
+    .exec(http("Page 0").get("/bundle.js"))
 
   setUp(
     scn.inject(
       nothingFor(5.seconds),
-      constantUsersPerSec(2000).during(2.minutes)
+      constantUsersPerSec(5000).during(2.minutes)
     )
   ).protocols(httpConf)
 }
