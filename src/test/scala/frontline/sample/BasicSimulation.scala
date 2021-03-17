@@ -8,8 +8,13 @@ package frontline.sample
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
+
 import scala.concurrent.duration._
+import java.util.UUID
+
 import io.gatling.core.session.Expression
+
+
 
 // import org.apache.http.client.HttpClient;
 // import org.apache.http.impl.client.HttpClientBuilder;
