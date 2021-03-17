@@ -33,18 +33,18 @@ class BasicSimulation extends Simulation {
   //   this.res = EntityUtils.toString(httpResponse.getEntity());
   // }
 
-   val authAPI = exec(
-    exec(
-      http("POST Auth API")
-        .post(this.SERVICES_HOST + "/executions/initialize")
-        .body(ElFileBody("auth.json")).asJson
-        .check(bodyString.saveAs("Auth_Response"))
-        .check(status.is(200))
-        .check(jsonPath("$.authData.token").find.saveAs("token")))
-      exec{session => { tokenAPI = session("token").as[String]
-      session}})
+  //  val authAPI = exec(
+  //   exec(
+  //     http("POST Auth API")
+  //       .post(this.SERVICES_HOST + "/executions/initialize")
+  //       .body(ElFileBody("auth.json")).asJson
+  //       .check(bodyString.saveAs("Auth_Response"))
+  //       .check(status.is(200))
+  //       .check(jsonPath("$.authData.token").find.saveAs("token")))
+  //     exec{session => { tokenAPI = session("token").as[String]
+  //     session}})
 
-var headers_10 = Map("Content-Type" -> """application/json""", "Authorization" -> "Bearer ${token}")
+var headers_10 = Map("Content-Type" -> """application/json""", "Authorization" -> "Bearer " + TOKEN)
 
 
   val httpConf = http
@@ -66,7 +66,7 @@ var headers_10 = Map("Content-Type" -> """application/json""", "Authorization" -
 
 
   val scn = scenario("scenario1")
-    .exec(authAPI)
+    // .exec(authAPI)
     .pause(1)
     .exec(getAllDevices())
     .exec(http("Page 0").get("/bundle.js"))
