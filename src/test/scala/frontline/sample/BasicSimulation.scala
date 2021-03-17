@@ -22,9 +22,9 @@ class BasicSimulation extends Simulation {
 
   before() {
     val httpClient = HttpClientBuilder.create.build
-    HttpPost request = new HttpPost(this.SERVICES_HOST + "/executions/initialize");
-    String json = "{\"projectId\":\"EFlU5RmSlcO9rhsKuMPd\",\"token\":\"yZZdfByGuQSlpT1oxBOBaVAkM7kQHUKlUNOvUZtjc5N5Kl421N\",\"branchName\":\"master\",\"lightweightMode\":true,\"localGrid\":true}";
-    StringEntity entity = new StringEntity(json);
+    val request = new HttpPost(this.SERVICES_HOST + "/executions/initialize");
+    val json = "{\"projectId\":\"EFlU5RmSlcO9rhsKuMPd\",\"token\":\"yZZdfByGuQSlpT1oxBOBaVAkM7kQHUKlUNOvUZtjc5N5Kl421N\",\"branchName\":\"master\",\"lightweightMode\":true,\"localGrid\":true}";
+    val entity = new StringEntity(json);
     httpPost.setEntity(entity);
     val httpResponse = httpClient.execute(request)
     println("StatusCode - " + httpResponse.getStatusLine.getStatusCode)
