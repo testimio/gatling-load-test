@@ -62,7 +62,8 @@ class BasicSimulation extends Simulation {
       .andThen(
         load.inject(
           nothingFor(5.seconds),
-          constantUsersPerSec(500).during(20.seconds)
+          constantUsersPerSec(2000).during(20.seconds),
+          nothingFor(15.seconds),
         )
       )
   ).protocols(httpConf)
