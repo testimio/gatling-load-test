@@ -44,9 +44,10 @@ class BasicSimulation extends Simulation {
  val run = exec(
     exec { session => session.set("authToken", tokenAPI)}
     .exec(http("lightweight")
-      .post("/result/lightweight/test")
-      .body(ElFileBody("result.json")).asJson
-      .headers(sessionHeaders)
+      // .post("/result/lightweight/test")
+      // .body(ElFileBody("result.json")).asJson
+      // .headers(sessionHeaders)
+      .get("/health")
       .check(status.in(200 to 210)))
  )
 
