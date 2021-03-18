@@ -22,6 +22,9 @@ class BasicSimulation extends Simulation {
 
   val httpConf = http
     .baseUrl("https://services.testim.io")
+
+
+  val sessionHeaders = Map("Authorization" -> "Bearer ${authToken}")
   
   val authAPI = exec(
     exec(
@@ -30,20 +33,22 @@ class BasicSimulation extends Simulation {
         .body(ElFileBody("auth.json")).asJson
         .check(bodyString.saveAs("Auth_Response"))
         .check(status.is(200))
-        .check(jsonPath("$.authData.token").find.saveAs("token")))
-      exec{session => { tokenAPI = session("token").as[String]
+        .check(jsonPath("$.authData.token").exists.saveAs("authToken")))
+      exec{session => { tokenAPI = session("authToken").as[String]
       session}}
     )
 
+
+
  def run() = {
-    exec { session => println("token print2"); session }
-    exec { session => session.set("token", tokenAPI); session }
-    exec { session => session.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink"); session }
-    exec { session => println(session("token")); session }
+    exec { session => println("authToken print2"); session }
+    exec { session => session.set("authToken", tokenAPI); session }
+    exec { session => println(session("authToken")); session }
+    exec { session => session.set("authToken", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink"); session }
     exec(http("lightweight")
       .post("/result/lightweight/test")
       .body(ElFileBody("result.json")).asJson
-      .authorizationHeader(s"Bearer $tokenAPI")
+      .headers(sessionHeaders)
       .check(status.in(200 to 210)))
   }
 
