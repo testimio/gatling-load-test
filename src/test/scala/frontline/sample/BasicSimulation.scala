@@ -44,7 +44,7 @@ class BasicSimulation extends Simulation {
     // exec{session => println("authToken print2")} 
     // exec { session => session.set("authToken", tokenAPI)}
     // exec { session => println(session("authToken")); session }
-    exec { session => session.set("authToken", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink") }
+    exec { session => session.set("authToken", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDY2NzA0LCJleHAiOjE2MTYwNzAzMDR9._CbUcbscohJxEQLzrJuOtl1IaFB9TVxeAtDgFTsel4Y") }
     .exec(http("lightweight")
       .post("/result/lightweight/test")
       .body(ElFileBody("result.json")).asJson
