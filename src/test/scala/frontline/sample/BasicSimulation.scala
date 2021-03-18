@@ -50,6 +50,7 @@ class BasicSimulation extends Simulation {
       // .headers(sessionHeaders)
       .get("/")
       .check(status.in(200 to 210)))
+    .pause(100)
  )
 
   val authScenario = scenario("auth")
