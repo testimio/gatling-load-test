@@ -35,8 +35,6 @@ class BasicSimulation extends Simulation {
       session}}
     )
 
-
-
  def run() = {
     exec { session => println("token print2"); session }
     exec { session => session.set("token", tokenAPI); session }
@@ -45,7 +43,7 @@ class BasicSimulation extends Simulation {
     exec(http("lightweight")
       .post("/result/lightweight/test")
       .body(ElFileBody("result.json")).asJson
-      .headers(Map("Authorization" -> "Bearer ${token}"))
+      .authorizationHeader(s"Bearer $tokenAPI")
       .check(status.in(200 to 210)))
   }
 
