@@ -22,6 +22,7 @@ class BasicSimulation extends Simulation {
 
   val httpConf = http
     .baseUrl("https://services.testim.io")
+    .shareConnections
 
 
   val sessionHeaders = Map("Authorization" -> "Bearer ${authToken}")
