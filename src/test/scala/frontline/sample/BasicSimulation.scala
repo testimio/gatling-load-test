@@ -40,7 +40,7 @@ class BasicSimulation extends Simulation {
 
 
 
- val run() = 
+ val run() = exec(
     // exec{session => println("authToken print2")} 
     // exec { session => session.set("authToken", tokenAPI)}
     // exec { session => println(session("authToken")); session }
@@ -50,6 +50,7 @@ class BasicSimulation extends Simulation {
       .body(ElFileBody("result.json")).asJson
       .headers(sessionHeaders)
       .check(status.in(200 to 210)))
+ )
 
   val authScenario = scenario("auth")
     .exec(authAPI)
