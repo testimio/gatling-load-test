@@ -40,7 +40,7 @@ class BasicSimulation extends Simulation {
 
 
 
- val run() = exec(
+ val run = exec(
     // exec{session => println("authToken print2")} 
     // exec { session => session.set("authToken", tokenAPI)}
     // exec { session => println(session("authToken")); session }
