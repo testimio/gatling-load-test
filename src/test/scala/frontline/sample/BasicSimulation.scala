@@ -21,7 +21,8 @@ class BasicSimulation extends Simulation {
   val uuidfeeder = Iterator.continually(Map("uuid" -> UUID.randomUUID().toString))
 
   val httpConf = http
-    .baseUrl("https://services.testim.io")
+    // .baseUrl("https://services.testim.io")
+    .baseUrl("https://demo.testim.io")
     .shareConnections
 
 
@@ -47,7 +48,7 @@ class BasicSimulation extends Simulation {
       // .post("/result/lightweight/test")
       // .body(ElFileBody("result.json")).asJson
       // .headers(sessionHeaders)
-      .get("/health")
+      .get("/")
       .check(status.in(200 to 210)))
  )
 
