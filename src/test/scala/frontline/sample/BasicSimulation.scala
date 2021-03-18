@@ -50,7 +50,6 @@ class BasicSimulation extends Simulation {
       .body(ElFileBody("result.json")).asJson
       .headers(sessionHeaders)
       .check(status.in(200 to 210)))
-  }
 
   val authScenario = scenario("auth")
     .exec(authAPI)
@@ -58,7 +57,7 @@ class BasicSimulation extends Simulation {
   val load = scenario("load")
     .pause(1)
     .feed(uuidfeeder)
-    .exec(run())
+    .exec(run)
 
   setUp(
     authScenario.inject(atOnceUsers(1)).noShard
