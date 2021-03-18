@@ -31,7 +31,7 @@ class BasicSimulation extends Simulation {
         .check(bodyString.saveAs("Auth_Response"))
         .check(status.is(200))
         .check(jsonPath("$.authData.token").find.saveAs("token")))
-      exec{session => { tokenAPI = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink"
+      exec{session => { tokenAPI = session("token").as[String]
       session}}
     )
 
@@ -40,8 +40,8 @@ class BasicSimulation extends Simulation {
  def run() = {
     exec { session => println("token print2"); session }
     exec { session => session.set("token", tokenAPI); session }
+    exec { session => session.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink"); session }
     exec { session => println(session("token")); session }
-    // exec { session => session.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink") }
     exec(http("lightweight")
       .post("/result/lightweight/test")
       .body(ElFileBody("result.json")).asJson
