@@ -39,7 +39,7 @@ class BasicSimulation extends Simulation {
 
  def run() = {
     exec { session => println("token print2"); session }
-    exec(session => session.set("token", tokenAPI))
+    exec { session => session.set("token", tokenAPI); session }
     exec { session => println(session("token")); session }
     // exec { session => session.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDE4MzkwLCJleHAiOjE2MTYwMjE5OTB9.DtP_bgDfPY6XaudNYLYCo8Pu7JMRmfKlVV7kMkDhink") }
     exec(http("lightweight")
