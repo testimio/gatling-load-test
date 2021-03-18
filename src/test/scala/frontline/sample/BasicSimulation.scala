@@ -41,10 +41,7 @@ class BasicSimulation extends Simulation {
 
 
  val run = exec(
-    // exec{session => println("authToken print2")} 
     exec { session => session.set("authToken", tokenAPI)}
-    // exec { session => println(session("authToken")); session }
-    // exec { session => session.set("authToken", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNpOkVGbFU1Um1TbGNPOXJoc0t1TVBkIiwiaWF0IjoxNjE2MDY2NzA0LCJleHAiOjE2MTYwNzAzMDR9._CbUcbscohJxEQLzrJuOtl1IaFB9TVxeAtDgFTsel4Y") }
     .exec(http("lightweight")
       .post("/result/lightweight/test")
       .body(ElFileBody("result.json")).asJson
@@ -65,7 +62,7 @@ class BasicSimulation extends Simulation {
       .andThen(
         load.inject(
           nothingFor(5.seconds),
-          constantUsersPerSec(5).during(20.seconds)
+          constantUsersPerSec(500).during(20.seconds)
         )
       )
   ).protocols(httpConf)
