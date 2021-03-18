@@ -49,9 +49,8 @@ class BasicSimulation extends Simulation {
       // .body(ElFileBody("result.json")).asJson
       // .headers(sessionHeaders)
       .get("/")
-      .check(status.in(200 to 210)
-      .pause(100.milliseconds)
-      ))
+      .check(status.in(200 to 210))
+    .pause(100.milliseconds))
  )
 
   val authScenario = scenario("auth")
