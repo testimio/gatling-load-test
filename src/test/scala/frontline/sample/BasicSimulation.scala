@@ -16,7 +16,7 @@ import io.gatling.core.session.Expression
 
 
 class BasicSimulation extends Simulation {
-  private var tokenAPI = ""
+  private var tokenAPI = "";
 
   val uuidfeeder = Iterator.continually(Map("uuid" -> UUID.randomUUID().toString))
 
@@ -32,7 +32,7 @@ class BasicSimulation extends Simulation {
         .check(status.is(200))
         .check(jsonPath("$.authData.token").find.saveAs("token")))
       exec{session => { tokenAPI = session("token").as[String]
-      // session}}
+      session}}
     )
 
 
