@@ -67,7 +67,7 @@ class BasicSimulation extends Simulation {
       .andThen(
         load.inject(
           nothingFor(5.seconds),
-          constantUsersPerSec(2000).during(30.seconds),
+          constantUsersPerSec(2200).during(30.seconds),
           nothingFor(15.seconds),
         )
       )
