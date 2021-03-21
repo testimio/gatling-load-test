@@ -21,9 +21,8 @@ class BasicSimulation extends Simulation {
   val uuidfeeder = Iterator.continually(Map("uuid" -> UUID.randomUUID().toString))
 
   val httpConf = http
-    // .baseUrl("https://services.testim.io")
-    // .baseUrl("https://demo.testim.io")
-    .baseUrl("https://loadtest.testim.io")
+    .baseUrl("https://services.testim.io")
+    // .baseUrl("https://loadtest.testim.io")
     .shareConnections
 
 
@@ -45,11 +44,11 @@ class BasicSimulation extends Simulation {
 
  val run = exec(
     exec { session => session.set("authToken", tokenAPI)}
-    .exec(http("healthz")
+    .exec(http("health")
       // .post("/result/lightweight/test")
       // .body(ElFileBody("result.json")).asJson
       // .headers(sessionHeaders)
-      .get("/healthz")
+      .get("/health")
       .check(status.in(200 to 210)))
     .pause(100.milliseconds)
  )
@@ -67,8 +66,8 @@ class BasicSimulation extends Simulation {
       .andThen(
         load.inject(
           nothingFor(5.seconds),
-          rampUsersPerSec(10).to(40000).during(20.minutes),
-          constantUsersPerSec(40000).during(3.minutes),
+          rampUsersPerSec(10).to(5000).during(3.minutes),
+          constantUsersPerSec(5000).during(3.minutes),
           nothingFor(15.seconds),
         )
       )
