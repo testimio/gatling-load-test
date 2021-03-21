@@ -23,7 +23,7 @@ class BasicSimulation extends Simulation {
   val httpConf = http
     // .baseUrl("https://services.testim.io")
     // .baseUrl("https://demo.testim.io")
-    .baseUrl("https://a706ffca1c6c011eaa89006696688415-127946467.us-west-2.elb.amazonaws.com")
+    .baseUrl("https://loadtest.testim.io")
     .shareConnections
 
 
