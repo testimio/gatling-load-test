@@ -18,7 +18,8 @@ import io.gatling.core.session.Expression
 class BasicSimulation extends Simulation {
   private var tokenAPI = "";
 
-  val uuidfeeder = Iterator.continually(Map("uuid" -> UUID.randomUUID().toString))
+  val uuidFeeder = Iterator.continually(Map("uuid" -> UUID.randomUUID().toString))
+  val countFeeder = Iterator.from(0).map(i => Map("userId" -> i))
 
   val httpConf = http
     .baseUrl("https://services.testim.io")
@@ -32,6 +33,7 @@ class BasicSimulation extends Simulation {
     exec(
       http("POST Auth API")
         .post("/executions/initialize")
+        .queryParam("reqId", "${uuid}${userId}")
         .body(ElFileBody("auth.json")).asJson
         .check(bodyString.saveAs("Auth_Response"))
         .check(status.is(200))
@@ -58,7 +60,8 @@ class BasicSimulation extends Simulation {
 
   val load = scenario("load")
     .pause(1)
-    .feed(uuidfeeder)
+    .feed(uuidFeeder)
+    .feed(countFeeder)
     .exec(run)
 
   setUp(
