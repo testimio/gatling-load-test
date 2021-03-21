@@ -22,7 +22,8 @@ class BasicSimulation extends Simulation {
 
   val httpConf = http
     // .baseUrl("https://services.testim.io")
-    .baseUrl("https://demo.testim.io")
+    // .baseUrl("https://demo.testim.io")
+    .baseUrl("https://a706ffca1c6c011eaa89006696688415-127946467.us-west-2.elb.amazonaws.com")
     .shareConnections
 
 
@@ -48,7 +49,7 @@ class BasicSimulation extends Simulation {
       // .post("/result/lightweight/test")
       // .body(ElFileBody("result.json")).asJson
       // .headers(sessionHeaders)
-      .get("/")
+      .get("/healthz")
       .check(status.in(200 to 210)))
     .pause(100.milliseconds)
  )
@@ -66,7 +67,7 @@ class BasicSimulation extends Simulation {
       .andThen(
         load.inject(
           nothingFor(5.seconds),
-          constantUsersPerSec(30000).during(30.seconds),
+          constantUsersPerSec(300).during(30.seconds),
           nothingFor(15.seconds),
         )
       )
