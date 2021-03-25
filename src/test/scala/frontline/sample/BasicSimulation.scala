@@ -49,8 +49,8 @@ class BasicSimulation extends Simulation {
       // .post("/result/lightweight/test")
       // .body(ElFileBody("result.json")).asJson
       // .headers(sessionHeaders)
-      .queryParam("reqId", "${uuid}${userId}")
       .get("/health")
+      .queryParam("reqId", "${uuid}${userId}")
       .check(status.in(200 to 210)))
     .pause(100.milliseconds)
  )
