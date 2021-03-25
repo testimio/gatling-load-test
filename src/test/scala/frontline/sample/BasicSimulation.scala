@@ -33,7 +33,6 @@ class BasicSimulation extends Simulation {
     exec(
       http("POST Auth API")
         .post("/executions/initialize")
-        .queryParam("reqId", "${uuid}${userId}")
         .body(ElFileBody("auth.json")).asJson
         .check(bodyString.saveAs("Auth_Response"))
         .check(status.is(200))
@@ -50,6 +49,7 @@ class BasicSimulation extends Simulation {
       // .post("/result/lightweight/test")
       // .body(ElFileBody("result.json")).asJson
       // .headers(sessionHeaders)
+      .queryParam("reqId", "${uuid}${userId}")
       .get("/health")
       .check(status.in(200 to 210)))
     .pause(100.milliseconds)
